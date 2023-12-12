@@ -21,9 +21,9 @@ nodes:
     type: code
     path: retrieve_chunks.py
   inputs:
-    search: demo
+    search: search-service-juraandco
     question: ${inputs.question}
-    index_name: vector-1701096467624
+    index_name: vector-1702374662112
     embedding: ${Embedding_x4lj.output}
     full_text_search: true
     vector_search: true
@@ -44,7 +44,7 @@ nodes:
     instructions: ${prompt_node_xiv7.output}
     question: ${inputs.question}
     chat_history: ${inputs.chat_history}
-  connection: AOAI
+  connection: azure-openai-juraandco
   api: chat
 - name: Embedding_x4lj
   type: python
@@ -52,6 +52,6 @@ nodes:
     type: package
     tool: promptflow.tools.embedding.embedding
   inputs:
-    connection: AOAI
+    connection: azure-openai-juraandco
     deployment_name: text-embedding-ada-002
     input: ${inputs.question}
